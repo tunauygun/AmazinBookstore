@@ -1,4 +1,4 @@
-package com.example.amazinbookstore.books;
+package com.example.amazinbookstore.Admin_books;
 
 
 import jakarta.persistence.ElementCollection;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Book {
+public class Admin_Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,9 +31,9 @@ public class Book {
     private int publicationYear;
 
     // Constructors
-    public Book() {}
+    public Admin_Book() {}
 
-    public Book(List<String> authorNames, String genre, String isbn, int pageCount, double price, String publisherName, int quantity, String title, String url, int publicationYear) {
+    public Admin_Book(List<String> authorNames, String genre, String isbn, int pageCount, double price, String publisherName, int quantity, String title, String url, int publicationYear) {
         this.authorNames = authorNames;
         this.genre = genre;
         this.isbn = isbn;

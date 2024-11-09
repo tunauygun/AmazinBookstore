@@ -1,4 +1,4 @@
-package com.example.amazinbookstore.books;
+package com.example.amazinbookstore.Admin_books;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/view/books")
-public class BookViewController {
+@RequestMapping("/view/admin/books")
+public class Admin_BookViewController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private Admin_BookRepository adminBookRepository;
 
     // View all books
     @GetMapping
     public String viewAllBooks(Model model) {
-        List<Book> books = bookRepository.findAll();
-        model.addAttribute("books", books);
-        return "books"; // This maps to books.html
+        List<Admin_Book> adminBooks = adminBookRepository.findAll();
+        model.addAttribute("books", adminBooks);
+        return "Admin_Books.html"; // This maps to books.html
     }
 }

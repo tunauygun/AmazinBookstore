@@ -1,7 +1,7 @@
 package com.example.amazinbookstore;
 
-import com.example.amazinbookstore.books.Book;
-import com.example.amazinbookstore.books.BookRepository;
+import com.example.amazinbookstore.Admin_books.Admin_Book;
+import com.example.amazinbookstore.Admin_books.Admin_BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,10 +17,10 @@ public class AmazinBookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository bookRepository) {
+	public CommandLineRunner demo(Admin_BookRepository adminBookRepository) {
 		return (args) -> {
 			// Create some initial books
-			Book book1 = new Book(
+			Admin_Book adminBook1 = new Admin_Book(
 					Arrays.asList("Author One", "Author Two"),
 					"Fantasy",
 					"978-3-16-148410-0",
@@ -33,7 +33,7 @@ public class AmazinBookstoreApplication {
 					2024
 			);
 
-			Book book2 = new Book(
+			Admin_Book adminBook2 = new Admin_Book(
 					Arrays.asList("Author Three"),
 					"Science Fiction",
 					"978-1-40-289462-6",
@@ -46,7 +46,7 @@ public class AmazinBookstoreApplication {
 					2023
 			);
 
-			Book book3 = new Book(
+			Admin_Book adminBook3 = new Admin_Book(
 					Arrays.asList("Author Four", "Author Five"),
 					"Romance",
 					"978-0-13-468599-1",
@@ -60,9 +60,9 @@ public class AmazinBookstoreApplication {
 			);
 
 			// Save the books in the repository
-			bookRepository.save(book1);
-			bookRepository.save(book2);
-			bookRepository.save(book3);
+			adminBookRepository.save(adminBook1);
+			adminBookRepository.save(adminBook2);
+			adminBookRepository.save(adminBook3);
 		};
 	}
 
