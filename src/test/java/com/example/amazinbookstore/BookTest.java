@@ -1,4 +1,4 @@
-package com.example.amazinbookstore.Admin_books;
+package com.example.amazinbookstore;
 
 import com.example.amazinbookstore.entities.Book;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
-class Admin_BookTest {
+class BookTest {
     @Test
     public void testAdminBookConstructor() {
 
