@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookstore Admin</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/Admin_Books.js"></script>
+  <link rel="stylesheet" href="/Admin_Books.css"></link>
+</head>
+<body>
+
+<h1>Bookstore Admin</h1>
+
+<h2>Add New Book</h2>
+<form id="addBookForm">
+  <input type="text" id="title" placeholder="Title" required>
+  <input type="text" id="authorNames" placeholder="Author Names (comma separated)" required>
+  <input type="text" id="genre" placeholder="Genre" required>
+  <input type="text" id="isbn" placeholder="ISBN" required>
+  <input type="number" id="pageCount" placeholder="Page Count" required>
+  <input type="number" id="price" placeholder="Price" step="0.01" required>
+  <input type="text" id="publisherName" placeholder="Publisher Name" required>
+  <input type="number" id="quantity" placeholder="Quantity" required>
+  <input type="text" id="url" placeholder="URL" required>
+  <input type="number" id="year" placeholder="Year" required>
+  <button type="submit">Add Book</button>
+</form>
+
+<h2>All Books</h2>
+<table id="booksTable">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Authors</th>
+    <th>Genre</th>
+    <th>ISBN</th>
+    <th>Page Count</th>
+    <th>Price</th>
+    <th>Publisher</th>
+    <th>Quantity</th>
+    <th>Year</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Rows will be dynamically populated here -->
+  </tbody>
+</table>
+
+</body>
+</html>
