@@ -59,10 +59,13 @@ public class Book {
         return new ArrayList<>(authorNames);
     }
 
+    public String getAuthorNamesAsString() {
+        return String.join(", ", authorNames);
+    }
+
     public void setAuthorNames(List<String> authorNames) {
         this.authorNames = authorNames;
     }
-
 
     public String getGenre() {
         return genre;
@@ -90,6 +93,10 @@ public class Book {
 
     public double getPrice() {
         return price;
+    }
+
+    public String getPriceAsString() {
+        return String.format("$%.2f", price);
     }
 
     public void setPrice(double price) {

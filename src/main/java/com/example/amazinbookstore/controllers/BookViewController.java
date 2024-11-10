@@ -15,13 +15,21 @@ import java.util.List;
 public class BookViewController {
 
     @Autowired
-    private BookRepository adminBookRepository;
+    private BookRepository bookRepository;
 
-    // View all books
+    // Manage all books as customer
     @GetMapping("/admin/books")
-    public String viewAllBooks(Model model) {
-        List<Book> adminBooks = adminBookRepository.findAll();
-        model.addAttribute("books", adminBooks);
-        return "Admin_Books"; // This maps to books.html
+    public String manageAllBooksAsAdmin(Model model) {
+        List<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "Admin_Books";
+    }
+
+    // View all books as customer
+    @GetMapping("customer/books")
+    public String viewAllBooksAsCustomer(Model model) {
+        List<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "Customer_Books";
     }
 }
