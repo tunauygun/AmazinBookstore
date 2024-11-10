@@ -1,4 +1,4 @@
 
 
 
-http://localhost:8080/view/admin/books
+http://localhost:8080/admin/books

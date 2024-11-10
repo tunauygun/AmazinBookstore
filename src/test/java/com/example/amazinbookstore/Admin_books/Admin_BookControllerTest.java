@@ -1,5 +1,8 @@
 package com.example.amazinbookstore.Admin_books;
 
+import com.example.amazinbookstore.controllers.BookController;
+import com.example.amazinbookstore.entities.Book;
+import com.example.amazinbookstore.repositories.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class Admin_BookControllerTest {
 
     @Autowired
-    private Admin_BookRepository adminBookRepository;
+    private BookRepository adminBookRepository;
 
     @Autowired
-    private Admin_BookController adminBookController;
+    private BookController adminBookController;
     @BeforeEach
     void setUp() {
 
@@ -32,11 +35,11 @@ class Admin_BookControllerTest {
     @Test
     void getAllBooks() {
         List<String> authorNames = Arrays.asList("Author One", "Author Two");
-        Admin_Book book = new Admin_Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
+        Book book = new Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
         adminBookRepository.save(book);
 
         // Act
-        List<Admin_Book> result = adminBookController.getAllBooks();
+        List<Book> result = adminBookController.getAllBooks();
 
         // Assert
         assertNotNull(result);
@@ -47,11 +50,11 @@ class Admin_BookControllerTest {
     @Test
     void getBookById() {
         List<String> authorNames = Arrays.asList("Author One", "Author Two");
-        Admin_Book book = new Admin_Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
-        Admin_Book savedBook = adminBookRepository.save(book);
+        Book book = new Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
+        Book savedBook = adminBookRepository.save(book);
         Long bookId = savedBook.getId();
 
-        ResponseEntity<Admin_Book> response = adminBookController.getBookById(bookId);
+        ResponseEntity<Book> response = adminBookController.getBookById(bookId);
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(bookId, Objects.requireNonNull(response.getBody()).getId());
@@ -61,8 +64,8 @@ class Admin_BookControllerTest {
     @Test
     void createBook() {
         List<String> authorNames = Arrays.asList("Author One", "Author Two");
-        Admin_Book book = new Admin_Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
-        Admin_Book result = adminBookController.createBook(book);
+        Book book = new Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
+        Book result = adminBookController.createBook(book);
 
         assertNotNull(result);
         assertEquals("My boy Ben handsome", result.getTitle());
@@ -72,12 +75,12 @@ class Admin_BookControllerTest {
     @Test
     void updateBook() {
         List<String> authorNames = Arrays.asList("Author One", "Author Two");
-        Admin_Book book = new Admin_Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
-        Admin_Book savedBook = adminBookRepository.save(book);
+        Book book = new Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
+        Book savedBook = adminBookRepository.save(book);
         Long bookId = savedBook.getId();
 
-        Admin_Book updatedDetails = new Admin_Book(List.of("Ben Li"), "Updated Author", "Fiction", 33, 300, "Ben company", 99, "Ben not handsome", "https://example.com/updated", 2099);
-        ResponseEntity<Admin_Book> response = adminBookController.updateBook(bookId, updatedDetails);
+        Book updatedDetails = new Book(List.of("Ben Li"), "Updated Author", "Fiction", 33, 300, "Ben company", 99, "Ben not handsome", "https://example.com/updated", 2099);
+        ResponseEntity<Book> response = adminBookController.updateBook(bookId, updatedDetails);
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -88,8 +91,8 @@ class Admin_BookControllerTest {
     @Test
     void deleteBook() {
         List<String> authorNames = Arrays.asList("Author One", "Author Two");
-        Admin_Book book = new Admin_Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
-        Admin_Book savedBook = adminBookRepository.save(book);
+        Book book = new Book(authorNames, "Test Author", "Fiction", 12, 100, "Ben", 3, "My boy Ben handsome", "https://example.com", 2023);
+        Book savedBook = adminBookRepository.save(book);
         Long bookId = savedBook.getId();
         ResponseEntity<Void> response = adminBookController.deleteBook(bookId);
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());

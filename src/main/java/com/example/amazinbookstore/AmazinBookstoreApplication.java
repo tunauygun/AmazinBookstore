@@ -1,7 +1,7 @@
 package com.example.amazinbookstore;
 
-import com.example.amazinbookstore.Admin_books.Admin_Book;
-import com.example.amazinbookstore.Admin_books.Admin_BookRepository;
+import com.example.amazinbookstore.entities.Book;
+import com.example.amazinbookstore.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,10 +17,10 @@ public class AmazinBookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(Admin_BookRepository adminBookRepository) {
+	public CommandLineRunner demo(BookRepository adminBookRepository) {
 		return (args) -> {
 			// Create some initial books
-			Admin_Book adminBook1 = new Admin_Book(
+			Book adminBook1 = new Book(
 					Arrays.asList("Author One", "Author Two"),
 					"Fantasy",
 					"978-3-16-148410-0",
@@ -33,7 +33,7 @@ public class AmazinBookstoreApplication {
 					2024
 			);
 
-			Admin_Book adminBook2 = new Admin_Book(
+			Book adminBook2 = new Book(
 					Arrays.asList("Author Three"),
 					"Science Fiction",
 					"978-1-40-289462-6",
@@ -46,7 +46,7 @@ public class AmazinBookstoreApplication {
 					2023
 			);
 
-			Admin_Book adminBook3 = new Admin_Book(
+			Book adminBook3 = new Book(
 					Arrays.asList("Author Four", "Author Five"),
 					"Romance",
 					"978-0-13-468599-1",

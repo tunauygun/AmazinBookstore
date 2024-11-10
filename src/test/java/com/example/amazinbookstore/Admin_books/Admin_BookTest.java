@@ -1,9 +1,10 @@
 package com.example.amazinbookstore.Admin_books;
 
+import com.example.amazinbookstore.entities.Book;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +23,7 @@ class Admin_BookTest {
         String url = "https://example.com";
         int publicationYear = 2023;
 
-        Admin_Book book = new Admin_Book(authorNames, genre, isbn, pageCount, price, publisherName, quantity, title, url, publicationYear);
+        Book book = new Book(authorNames, genre, isbn, pageCount, price, publisherName, quantity, title, url, publicationYear);
 
         assertNotNull(book.getAuthorNames());
         assertEquals(Arrays.asList("Author One", "Author Two"), book.getAuthorNames());
@@ -40,7 +41,7 @@ class Admin_BookTest {
 
     @Test
     public void testAdminBookSetters() {
-        Admin_Book book = new Admin_Book();
+        Book book = new Book();
 
         book.setAuthorNames(Arrays.asList("Author One", "Author Two"));
         book.setGenre("Science Fiction");
