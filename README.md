@@ -1,4 +1,7 @@
+# Amazin Book Store - Group 11
 
-
-
-http://localhost:8080/admin/books
+### URLs for the deployed application
+#### Managing books as Admin
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/admin/books
+#### Viewing books as Customer
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/admin/books
