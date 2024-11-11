@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <title>Admin Menu</title>
+    <link th:href="@{/Main_Page.css}" rel="stylesheet">
+</head>
+
+<body>
+<div class="transparent-title">
+    <h1>Admin Menu</h1>
+</div>
+
+<div class="nav-buttons">
+    <a th:href="@{/amazinBookstore/admin/books}">
+        <button type="button" style="float: left">Books</button>
+    </a>
+    <a th:href="@{/amazinBookstore/admin/users}">
+        <button type="button" style="float: right">Users</button>
+    </a>
+</div>
+
+</body>
+</html>

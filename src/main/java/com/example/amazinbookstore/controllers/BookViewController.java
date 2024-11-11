@@ -17,8 +17,25 @@ public class BookViewController {
     @Autowired
     private BookRepository bookRepository;
 
+    @GetMapping("/amazinBookstore")
+    public String viewMainPage() {
+        return "Main_page";
+    }
+
+    @GetMapping("/amazinBookstore/admin")
+    public String viewAdminPage() {
+        return "Admin_Page";
+    }
+
+    @GetMapping("/amazinBookstore/cart")
+    public String viewCartPage(Model model) {
+        List<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "Cart_Page";
+    }
+
     // Manage all books as customer
-    @GetMapping("/admin/books")
+    @GetMapping("/amazinBookstore/admin/books")
     public String manageAllBooksAsAdmin(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
@@ -26,7 +43,7 @@ public class BookViewController {
     }
 
     // View all books as customer
-    @GetMapping("/customer/books")
+    @GetMapping("/amazinBookstore/customer/books")
     public String viewAllBooksAsCustomer(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);

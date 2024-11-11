@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-image: url("books-on-bookshelf-gray.jpg");
+    background-color: rgba(255, 255, 255, 0.7);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.transparent-title {
+    /*margin: 50px 50px;*/
+    margin: auto;
+    background-color: #000000;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+h1 {
+    font-size: 4em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 10px 15px;
+}
+
+.nav-buttons {
+    margin: auto;
+    width: 40%;
+    position: relative;
+    padding-top: 250px;
+    clear: both;
+}
+
+button {
+    padding: 6px 12px;
+    font-weight: bold;
+    background-color: #cc812c;
+    border: 1px solid #000000;
+    font-size: 2em;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}
+
+button:hover {
+    background-color: #7a4209;
+}
