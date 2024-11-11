@@ -1,7 +1,7 @@
 package com.example.amazinbookstore;
 
-import com.example.amazinbookstore.Admin_books.Admin_Book;
-import com.example.amazinbookstore.Admin_books.Admin_BookRepository;
+import com.example.amazinbookstore.Admin_users.Admin_User;
+import com.example.amazinbookstore.Admin_users.Admin_UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,52 +17,28 @@ public class AmazinBookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(Admin_BookRepository adminBookRepository) {
+	public CommandLineRunner demo(Admin_UserRepository adminUserRepository) {
 		return (args) -> {
-			// Create some initial books
-			Admin_Book adminBook1 = new Admin_Book(
-					Arrays.asList("Author One", "Author Two"),
-					"Fantasy",
-					"978-3-16-148410-0",
-					350,
-					29.99,
-					"Publisher A",
-					10,
-					"The Adventures",
-					"https://example.com/book1",
-					2024
+			// Create some initial users
+			Admin_User adminUser1 = new Admin_User(
+					"Admin",
+					true
 			);
 
-			Admin_Book adminBook2 = new Admin_Book(
-					Arrays.asList("Author Three"),
-					"Science Fiction",
-					"978-1-40-289462-6",
-					200,
-					19.99,
-					"Publisher B",
-					15,
-					"Journey to the West",
-					"https://example.com/book2",
-					2023
+			Admin_User adminUser2 = new Admin_User(
+					"Joe",
+					false
 			);
 
-			Admin_Book adminBook3 = new Admin_Book(
-					Arrays.asList("Author Four", "Author Five"),
-					"Romance",
-					"978-0-13-468599-1",
-					450,
-					24.99,
-					"Publisher C",
-					20,
-					"Love in the Time of Algorithms",
-					"https://example.com/book3",
-					2022
+			Admin_User adminUser3 = new Admin_User(
+					"Bob",
+					false
 			);
 
 			// Save the books in the repository
-			adminBookRepository.save(adminBook1);
-			adminBookRepository.save(adminBook2);
-			adminBookRepository.save(adminBook3);
+			adminUserRepository.save(adminUser1);
+			adminUserRepository.save(adminUser2);
+			adminUserRepository.save(adminUser3);
 		};
 	}
 
