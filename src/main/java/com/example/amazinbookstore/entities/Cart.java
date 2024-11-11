@@ -8,24 +8,15 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Book book;
+    private int bookId;
     private int quantity;
     private int totalPrice;
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
 
     public Cart() {
     }
 
-    public Cart(int quantity, int totalPrice) {
+    public Cart(int bookId, int quantity, int totalPrice) {
+        this.bookId = bookId;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
     }
@@ -36,6 +27,14 @@ public class Cart {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public int getQuantity() {

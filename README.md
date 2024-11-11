@@ -9,17 +9,19 @@ https://docs.google.com/presentation/d/1X9QLdqQebS50-IBtIaBtbH3_m5YRN2V0/edit?us
 
 ## URLs for the deployed application
 #### Main homepage can access all the other pages when starting here
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore
 http://localhost:8080/amazinBookstore
 #### Access page to access admin view of books
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin
 http://localhost:8080/amazinBookstore/admin
 #### Access page to access customer books in cart (Only view working as of now)
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/cart
 http://localhost:8080/amazinBookstore/cart
-
 #### Managing books as Admin
-https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/admin/books
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin/books
 http://localhost:8080/amazinBookstore/admin/books
 #### Viewing books as Customer
-https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/customer/books
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/customer/books
 http://localhost:8080/amazinBookstore/customer/books
 
 ## Database Schema for Milestone 1
