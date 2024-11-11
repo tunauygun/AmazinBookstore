@@ -14,3 +14,6 @@ http://localhost:8080/admin/books
 #### Viewing books as Customer
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/customer/books
 http://localhost:8080/customer/books
+
+## Database Schema for Milestone 1
+![bookstore](https://github.com/user-attachments/assets/17560f8e-7ed9-4cb4-a62c-1d6a1d1f6d4b)
