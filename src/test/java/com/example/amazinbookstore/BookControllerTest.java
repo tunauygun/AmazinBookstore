@@ -1,4 +1,4 @@
-package com.example.amazinbookstore.Admin_books;
+package com.example.amazinbookstore;
 
 import com.example.amazinbookstore.controllers.BookController;
 import com.example.amazinbookstore.entities.Book;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 
-class Admin_BookControllerTest {
+class BookControllerTest {
 
     @Autowired
     private BookRepository adminBookRepository;

@@ -1,4 +1,4 @@
-package com.example.amazinbookstore.Admin_books;
+package com.example.amazinbookstore;
 
 import com.example.amazinbookstore.entities.Book;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
-class Admin_BookTest {
+class BookTest {
     @Test
     public void testAdminBookConstructor() {
 
@@ -27,10 +27,12 @@ class Admin_BookTest {
 
         assertNotNull(book.getAuthorNames());
         assertEquals(Arrays.asList("Author One", "Author Two"), book.getAuthorNames());
+        assertEquals("Author One, Author Two", book.getAuthorNamesAsString());
         assertEquals("Fiction", book.getGenre());
         assertEquals("1234567890", book.getIsbn());
         assertEquals(350, book.getPageCount());
         assertEquals(29.99, book.getPrice());
+        assertEquals("$29.99", book.getPriceAsString());
         assertEquals("Test Publisher", book.getPublisherName());
         assertEquals(10, book.getQuantity());
         assertEquals("Test Book", book.getTitle());
@@ -57,10 +59,12 @@ class Admin_BookTest {
         // Assert
         assertNotNull(book.getAuthorNames());
         assertEquals(Arrays.asList("Author One", "Author Two"), book.getAuthorNames());
+        assertEquals("Author One, Author Two", book.getAuthorNamesAsString());
         assertEquals("Science Fiction", book.getGenre());
         assertEquals("0987654321", book.getIsbn());
         assertEquals(400, book.getPageCount());
         assertEquals(19.99, book.getPrice());
+        assertEquals("$19.99", book.getPriceAsString());
         assertEquals("Different Publisher", book.getPublisherName());
         assertEquals(15, book.getQuantity());
         assertEquals("Different Test Book", book.getTitle());
