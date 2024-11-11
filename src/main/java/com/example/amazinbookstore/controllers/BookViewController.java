@@ -26,7 +26,7 @@ public class BookViewController {
     }
 
     // View all books as customer
-    @GetMapping("customer/books")
+    @GetMapping("/customer/books")
     public String viewAllBooksAsCustomer(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
