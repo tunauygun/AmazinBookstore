@@ -29,7 +29,7 @@
                 <!-- This div contains the button that sends the post request with the-->
                 <!-- book id of the book to be added to the cart-->
                 <div class="button-container">
-                    <form th:action="@{/cart}" method="post">
+                    <form th:action="@{/api/cart}" method="post">
                         <input type="hidden" th:name="bookId" th:value="${book.id}" />
                         <button type="submit" class="add-to-cart-button">Add to Cart</button>
                     </form>

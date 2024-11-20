@@ -20,10 +20,10 @@ class CartControllerTest {
     @Test
     public void testAddNewBookToCart() throws Exception {
         // Perform a POST request to /cart with the book id
-        mockMvc.perform(MockMvcRequestBuilders.post("/cart")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/cart")
                         .param("bookId", "12345"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/cart"));
+                .andExpect(redirectedUrl("/amazinBookstore/cart"));
     }
 
 }

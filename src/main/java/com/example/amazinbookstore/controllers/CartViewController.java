@@ -12,24 +12,15 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/amazinBookstore")
-public class BookViewController {
+public class CartViewController {
 
     @Autowired
     private BookRepository bookRepository;
 
-    // Manage all books as customer
-    @GetMapping("/admin/books")
-    public String manageAllBooksAsAdmin(Model model) {
+    @GetMapping("/cart")
+    public String viewCartPage(Model model) {
         List<Book> books = bookRepository.findAll();
         model.addAttribute("books", books);
-        return "Admin_Books";
-    }
-
-    // View all books as customer
-    @GetMapping("/customer/books")
-    public String viewAllBooksAsCustomer(Model model) {
-        List<Book> books = bookRepository.findAll();
-        model.addAttribute("books", books);
-        return "Customer_Books";
+        return "Cart_Page";
     }
 }
