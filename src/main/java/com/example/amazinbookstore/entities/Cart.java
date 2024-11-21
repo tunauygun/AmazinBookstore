@@ -38,11 +38,13 @@ public class Cart {
     public void addCartItem(CartItem newCartItem) {
         for (CartItem cartItem : this.cartItems) {
             if (cartItem.getBook().getId() == newCartItem.getBook().getId()) {
-                cartItem.setQuantity(cartItem.getQuantity() + newCartItem.getQuantity());
+                incrementCartItemQuantity(cartItem.getId());
                 return;
             }
         }
-        this.cartItems.add(newCartItem);
+        if (newCartItem.getQuantity() <= newCartItem.getBook().getQuantity()) {
+            this.cartItems.add(newCartItem);
+        }
     }
 
     public boolean incrementCartItemQuantity(Long cartItemId) {

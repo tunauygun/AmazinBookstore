@@ -39,7 +39,6 @@ public class CartController {
             cartItem.setQuantity(1);
             cart.addCartItem(cartItem);
             cartRepository.save(cart);
-            System.out.println("Book ID to be added to cart: " + bookId);
         }
 
         return new RedirectView("/amazinBookstore/cart");
