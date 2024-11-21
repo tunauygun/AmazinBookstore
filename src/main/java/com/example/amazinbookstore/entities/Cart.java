@@ -49,7 +49,7 @@ public class Cart {
         for (CartItem cartItem : this.cartItems) {
             if (cartItem.getId() == cartItemId) {
                 int maxQuantity = cartItem.getBook().getQuantity();
-                if (cartItem.getQuantity() + 1 >= maxQuantity) {
+                if (cartItem.getQuantity() + 1 > maxQuantity) {
                     return false;
                 }
                 cartItem.setQuantity(cartItem.getQuantity() + 1);
