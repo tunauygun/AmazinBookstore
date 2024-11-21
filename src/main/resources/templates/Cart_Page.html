@@ -20,27 +20,20 @@
     <div class="cart-list">
 
         <!--This div represents the card for each book in the page-->
-        <div class="cart-item" th:each="book : ${books}">
-            <img th:src="@{${book.url}}" alt="Book cover">
+        <div class="cart-item" th:each="cartItem : ${cartItems}"
+             th:data-item-id="${cartItem.getId()}">
+            <img th:src="@{${cartItem.getBook().getUrl()}}" alt="Book cover">
             <div class="cart-item-desc">
-                <h2 th:text="${book.title}">Book Title</h2>
-                <p class="price" th:text="${book.getPriceAsString()}"></p>
+                <h2 th:text="${cartItem.getBook().getTitle()}">Book Title</h2>
+                <p class="price" th:text="${cartItem.getBook().getPriceAsString()}"></p>
             </div>
             <div class="cart-item-buttons">
-                <!-- This div contains the button that sends the post request with the-->
-                <!-- book id of the book to be added to the cart-->
                 <div class="button-inc-count-container">
-<!--                    <form th:action="@{/cart}" method="post">-->
-<!--                        <input type="hidden" th:name="bookId" th:value="${book.id}"/>-->
-                        <button type="submit" class="inc-count-button">-</button>
-<!--                    </form>-->
+                    <button type="submit" class="inc-count-button">-</button>
                 </div>
-                <h3 th:text="${book.getId()}">0</h3>
+                <h3 th:text="${cartItem.getBook().getId()}">0</h3>
                 <div class="button-dec-count-container">
-<!--                    <form th:action="@{/cart}" method="post">-->
-<!--                        <input type="hidden" th:name="bookId" th:value="${book.id}"/>-->
-                        <button type="submit" class="dec-count-button">+</button>
-<!--                    </form>-->
+                    <button type="submit" class="dec-count-button">+</button>
                 </div>
             </div>
         </div>
