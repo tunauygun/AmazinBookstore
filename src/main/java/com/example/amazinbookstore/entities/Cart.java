@@ -2,23 +2,21 @@ package com.example.amazinbookstore.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Cart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int bookId;
-    private int quantity;
-    private int totalPrice;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CartItem> cartItems;
 
     public Cart() {
-    }
-
-    public Cart(int bookId, int quantity, int totalPrice) {
-        this.bookId = bookId;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.cartItems = new ArrayList<>();
     }
 
     public Long getId() {
@@ -29,29 +27,31 @@ public class Cart {
         this.id = id;
     }
 
-    public int getBookId() {
-        return bookId;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void addCartItem(CartItem newCartItem) {
+        for (CartItem cartItem : this.cartItems) {
+            if (cartItem.getBook().getId() == newCartItem.getBook().getId()) {
+                cartItem.setQuantity(cartItem.getQuantity() + newCartItem.getQuantity());
+                return;
+            }
+        }
+        this.cartItems.add(newCartItem);
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void removeCartItem(int bookId) {
+        for (CartItem cartItem : this.cartItems) {
+            if (cartItem.getBook().getId() == bookId) {
+                this.cartItems.remove(cartItem);
+                break;
+            }
+        }
     }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
 
 }
