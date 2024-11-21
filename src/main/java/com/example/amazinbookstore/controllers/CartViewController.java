@@ -31,9 +31,8 @@ public class CartViewController {
     public String viewCartPage(Model model) {
         Optional<Cart> cartOptional = cartRepository.findById(1L);
         Cart cart = cartOptional.orElseGet(Cart::new);
-        List<CartItem> cartItems = cart.getCartItems();
 
-        model.addAttribute("cartItems", cartItems);
+        model.addAttribute("cart", cart);
         return "Cart_Page";
     }
 }

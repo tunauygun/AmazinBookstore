@@ -45,13 +45,32 @@ public class Cart {
         this.cartItems.add(newCartItem);
     }
 
-    public void removeCartItem(int bookId) {
+    public boolean incrementCartItemQuantity(Long cartItemId) {
         for (CartItem cartItem : this.cartItems) {
-            if (cartItem.getBook().getId() == bookId) {
-                this.cartItems.remove(cartItem);
-                break;
+            if (cartItem.getId() == cartItemId) {
+                int maxQuantity = cartItem.getBook().getQuantity();
+                if (cartItem.getQuantity() + 1 >= maxQuantity) {
+                    return false;
+                }
+                cartItem.setQuantity(cartItem.getQuantity() + 1);
+                return true;
             }
         }
+        return false;
+    }
+
+    public boolean decrementCartItemQuantity(Long cartItemId) {
+        for (CartItem cartItem : this.cartItems) {
+            if (cartItem.getId() == cartItemId) {
+                if (cartItem.getQuantity() == 1) {
+                    this.cartItems.remove(cartItem);
+                }else {
+                    cartItem.setQuantity(cartItem.getQuantity() - 1);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
 }

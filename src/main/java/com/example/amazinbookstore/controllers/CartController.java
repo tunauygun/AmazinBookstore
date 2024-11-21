@@ -6,6 +6,8 @@ import com.example.amazinbookstore.entities.CartItem;
 import com.example.amazinbookstore.repositories.BookRepository;
 import com.example.amazinbookstore.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -41,5 +43,32 @@ public class CartController {
         }
 
         return new RedirectView("/amazinBookstore/cart");
+    }
+
+    @PostMapping("{cartId}/updateQuantity/{itemId}/{action}")
+    public ResponseEntity<?> updateQuantity(@PathVariable Long cartId, @PathVariable Long itemId, @PathVariable String action) {
+        try {
+            Optional<Cart> cartOptional = cartRepository.findById(cartId);
+            if(cartOptional.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+            Cart cart = cartOptional.get();
+
+            // Perform the increment or decrement based on the action
+            if ("increment".equalsIgnoreCase(action)) {
+                boolean isSuccessful = cart.incrementCartItemQuantity(itemId);
+                if (!isSuccessful) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Quantity cannot be increased due to available quantity.");
+            } else if ("decrement".equalsIgnoreCase(action)) {
+                boolean isSuccessful = cart.decrementCartItemQuantity(itemId);
+                if (!isSuccessful) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Quantity cannot be decremented.");
+            } else {
+                return ResponseEntity.badRequest().body("Invalid action or quantity too low.");
+            }
+
+            cartRepository.save(cart);
+            return ResponseEntity.ok("Quantity updated successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating quantity.");
+        }
     }
 }
