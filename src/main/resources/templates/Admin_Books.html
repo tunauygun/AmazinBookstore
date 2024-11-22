@@ -3,6 +3,7 @@
 <head>
   <title>Bookstore Admin</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/sort.js"></script>
   <script src="/Admin_Books.js"></script>
   <link rel="stylesheet" href="/Admin_Books.css"></link>
 </head>
@@ -12,33 +13,11 @@
 
 <!-- Sorting Dropdown -->
 <h2>Sort Books</h2>
-<select id="sortDropdown" onchange="sortBooks()">
+<select id="sortDropdown">
   <option value="">Default</option>
   <option value="alphabetical">Alphabetical</option>
 </select>
 
-<script>
-  // Function to handle sorting
-  function sortBooks() {
-    const selectedValue = document.getElementById("sortDropdown").value;
-    // Redirect to the original URL if "Default" is selected
-    if (!selectedValue) {
-      window.location.href = `/amazinBookstore/admin/books`;
-    } else {
-      const url = `?sort=${selectedValue}`;
-      window.location.href = `/amazinBookstore/admin/books${url}`;
-    }
-  }
-
-  // Set the selected value in the dropdown based on the URL
-  document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const sortParam = urlParams.get("sort");
-    if (sortParam) {
-      document.getElementById("sortDropdown").value = sortParam;
-    }
-  });
-</script>
 
 <h2>Add New Book</h2>
 <form id="addBookForm">
