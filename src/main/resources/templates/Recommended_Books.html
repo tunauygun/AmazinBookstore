@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+    <title>Recommended Books</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/Recommended_Books.js"></script>
+    <link rel="stylesheet" href="/Recommended_Books.css">
+    <script>
+        <!-- Call function to show first image in javascript -->
+        $(document).ready(function() {
+            changeBook(1);
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1>Recommended Books</h1>
+
+    <!-- Container for one book recommendation slideshow (to be duplicated later)-->
+    <div class="container">
+        <h2>Based on other users</h2>
+
+        <!-- Container for book cars -->
+        <div class="book-card" th:each="book,i: ${books}" th:if="${i.index} <8">
+            <div class="book-card-number" th:text="${i.index}+1 + '/8'"></div>
+
+            <img th:src="${book.url}" alt="Book cover">
+            <!-- Book Specifications -->
+            <div class="book-card-description">
+                <h5 th:text="${book.title}">Book Title</h5>
+                <p><strong>Author(s):</strong> <span th:text="${book.getAuthorNamesAsString()}"></span></p>
+                <p><strong>Genre:</strong> <span th:text="${book.genre}"></span></p>
+                <p><strong>Publisher:</strong> <span th:text="${book.publisherName}"></span></p>
+                <p><strong>Year:</strong> <span th:text="${book.publicationYear}"></span></p>
+                <p class="price" th:text="${book.getPriceAsString()}"></p>
+
+                <!-- This div contains the button that sends the post request with the-->
+                <!-- book id of the book to be added to the cart-->
+                <div class="button-container">
+                    <form th:action="@{/api/cart}" method="post">
+                        <input type="hidden" th:name="bookId" th:value="${book.id}" />
+                        <button class="add-to-cart-button cursor" type="submit" >Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next and previous buttons to cycle images -->
+        <a class="prev" onclick="prevBook()">&#10094;</a>
+        <a class="next" onclick="nextBook()">&#10095;</a>
+
+        <!-- Image text -->
+        <div class="caption-container">
+            <p id="caption">
+        </div>
+
+        <!-- Thumbnail images -->
+        <div class="row">
+            <div class="column" th:each="book,i: ${books}" th:if="${i.index} <8">
+                <img class="thumbnail cursor" th:src="${book.url}" th:attr="onclick=|changeBook(${i.index}+1)|" th:alt="${book.title}">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

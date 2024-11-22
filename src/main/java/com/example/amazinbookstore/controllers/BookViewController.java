@@ -32,4 +32,12 @@ public class BookViewController {
         model.addAttribute("books", books);
         return "Customer_Books";
     }
+
+    // View all recommended books as customer
+    @GetMapping("/customer/recommended_books")
+    public String viewAllRecBooksAsCustomer(Model model) {
+        List<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "Recommended_Books";
+    }
 }
