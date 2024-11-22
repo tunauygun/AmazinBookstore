@@ -33,6 +33,7 @@ public class BookViewController {
     }
 
 
+
     @GetMapping("/customer/books")
     public String viewAllBooksAsCustomer(@RequestParam(value = "sort", required = false) String sort, Model model) {
         List<Book> books;

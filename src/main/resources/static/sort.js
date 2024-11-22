@@ -1,5 +1,5 @@
-
-function applySortDropdown(dropdownId, tableUpdateFunction, baseUrl) {
+// Sort utility function
+function applySortDropdown(dropdownId, baseUrl) {
     // Attach event listener to the dropdown
     document.addEventListener("DOMContentLoaded", function () {
         const dropdown = document.getElementById(dropdownId);
@@ -17,7 +17,7 @@ function applySortDropdown(dropdownId, tableUpdateFunction, baseUrl) {
             if (!selectedValue) {
                 window.location.href = baseUrl; // Redirect to base URL if "Default" is selected
             } else {
-                tableUpdateFunction(selectedValue);
+                window.location.href = `${baseUrl}?sort=${selectedValue}`;
             }
         });
     });
