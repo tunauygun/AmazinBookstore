@@ -10,6 +10,36 @@
 
 <h1>Bookstore Admin</h1>
 
+<!-- Sorting Dropdown -->
+<h2>Sort Books</h2>
+<select id="sortDropdown" onchange="sortBooks()">
+  <option value="">Default</option>
+  <option value="alphabetical">Alphabetical</option>
+</select>
+
+<script>
+  // Function to handle sorting
+  function sortBooks() {
+    const selectedValue = document.getElementById("sortDropdown").value;
+    // Redirect to the original URL if "Default" is selected
+    if (!selectedValue) {
+      window.location.href = `/amazinBookstore/admin/books`;
+    } else {
+      const url = `?sort=${selectedValue}`;
+      window.location.href = `/amazinBookstore/admin/books${url}`;
+    }
+  }
+
+  // Set the selected value in the dropdown based on the URL
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sortParam = urlParams.get("sort");
+    if (sortParam) {
+      document.getElementById("sortDropdown").value = sortParam;
+    }
+  });
+</script>
+
 <h2>Add New Book</h2>
 <form id="addBookForm">
   <input type="text" id="title" placeholder="Title" required>
@@ -42,8 +72,19 @@
   </tr>
   </thead>
   <tbody>
-  <!-- Rows will be dynamically populated here -->
+  <tr th:each="book : ${books}">
+    <td th:text="${book.title}">Title</td>
+    <td th:text="${book.getAuthorNamesAsString()}">Authors</td>
+    <td th:text="${book.genre}">Genre</td>
+    <td th:text="${book.isbn}">ISBN</td>
+    <td th:text="${book.pageCount}">Page Count</td>
+    <td th:text="${book.price}">Price</td>
+    <td th:text="${book.publisherName}">Publisher</td>
+    <td th:text="${book.quantity}">Quantity</td>
+    <td th:text="${book.publicationYear}">Year</td>
+  </tr>
   </tbody>
+
 </table>
 
 </body>

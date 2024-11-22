@@ -18,10 +18,22 @@ $(document).ready(function() {
         var bookId = $(this).data('id');
         deleteBook(bookId);
     });
+
+    // Update the table when sorting changes
+    $('#sortDropdown').on('change', function () {
+        loadBooks($(this).val());
+    });
+
 });
 
 // Function to load all books and populate the table
 function loadBooks() {
+
+    let url = '/api/books';
+    if (sortOrder) {
+        url += `?sort=${sortOrder}`;
+    }
+
     $.ajax({
         url: '/api/books',
         type: 'GET',
