@@ -17,11 +17,14 @@ import java.util.Optional;
 @RequestMapping("/api/cart")
 public class CartController {
 
-    @Autowired
-    private CartRepository cartRepository;
+    private final CartRepository cartRepository;
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    public CartController(CartRepository cartRepository, BookRepository bookRepository) {
+        this.cartRepository = cartRepository;
+        this.bookRepository = bookRepository;
+    }
 
     @PostMapping
     public RedirectView addNewBookToCart(@RequestParam("bookId") Long bookId) {
