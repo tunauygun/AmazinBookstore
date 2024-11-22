@@ -12,6 +12,41 @@
     <a th:href="@{/amazinBookstore/cart}">
         <button class="cart_button" type="button" style="float: right">Cart</button>
     </a>
+
+    <!-- Sorting Dropdown -->
+    <h2>Sort Books</h2>
+    <select id="sortDropdown" onchange="sortBooks()">
+        <option value="">Default</option>
+        <option value="alphabetical">Alphabetical</option>
+    </select>
+
+    <script>
+        // Function to handle sorting
+        function sortBooks() {
+            const selectedValue = document.getElementById("sortDropdown").value;
+            // Redirect to the original URL if "Default" is selected
+            if (!selectedValue) {
+                window.location.href = `/amazinBookstore/customer/books`;
+            } else {
+                const url = `?sort=${selectedValue}`;
+                window.location.href = `/amazinBookstore/customer/books${url}`;
+            }
+        }
+
+        // Set the selected value in the dropdown based on the URL
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sortParam = urlParams.get("sort");
+            if (sortParam) {
+                document.getElementById("sortDropdown").value = sortParam;
+            }
+        });
+    </script>
+
+
+
+
+    <!-- Books Display -->
     <h1>All Books</h1>
     <div class="books-grid">
 
@@ -26,8 +61,7 @@
                 <p><strong>Year:</strong> <span th:text="${book.publicationYear}"></span></p>
                 <p class="price" th:text="${book.getPriceAsString()}"></p>
 
-                <!-- This div contains the button that sends the post request with the-->
-                <!-- book id of the book to be added to the cart-->
+                <!-- Add to Cart Button -->
                 <div class="button-container">
                     <form th:action="@{/api/cart}" method="post">
                         <input type="hidden" th:name="bookId" th:value="${book.id}" />
@@ -35,8 +69,8 @@
                     </form>
                 </div>
             </div>
-
         </div>
+
     </div>
 </div>
 
