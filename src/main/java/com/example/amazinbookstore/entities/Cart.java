@@ -75,4 +75,27 @@ public class Cart {
         return false;
     }
 
+    public double getSubtotal(){
+        double price = 0;
+        for (CartItem cartItem : this.cartItems) {
+            price += cartItem.getBook().getPrice() * cartItem.getQuantity();
+        }
+        return price;
+    }
+
+    public double getShippingFee(){
+        double subtotal = getSubtotal();
+        if (subtotal > 0 && subtotal < 100) return 14.99;
+        return 0;
+    }
+
+    public double getTax(){
+        double totalPrice = getSubtotal() + getShippingFee();
+        return totalPrice * 0.13;
+    }
+
+    public double getTotalPrice(){
+        return getSubtotal() + getShippingFee() + getTax();
+    }
+
 }
