@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer - All Books</title>
-    <link th:href="@{/Customer_Books.css}" rel="stylesheet" >
+    <link th:href="@{/Customer_Books.css}" rel="stylesheet">
+    <script src="/sort.js"></script>
+    <script>
+        // Apply sorting logic for the customer view
+        applySortDropdown('sortDropdown', '/amazinBookstore/customer/books');
+    </script>
 </head>
 <body>
 
@@ -15,36 +20,10 @@
 
     <!-- Sorting Dropdown -->
     <h2>Sort Books</h2>
-    <select id="sortDropdown" onchange="sortBooks()">
+    <select id="sortDropdown">
         <option value="">Default</option>
         <option value="alphabetical">Alphabetical</option>
     </select>
-
-    <script>
-        // Function to handle sorting
-        function sortBooks() {
-            const selectedValue = document.getElementById("sortDropdown").value;
-            // Redirect to the original URL if "Default" is selected
-            if (!selectedValue) {
-                window.location.href = `/amazinBookstore/customer/books`;
-            } else {
-                const url = `?sort=${selectedValue}`;
-                window.location.href = `/amazinBookstore/customer/books${url}`;
-            }
-        }
-
-        // Set the selected value in the dropdown based on the URL
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sortParam = urlParams.get("sort");
-            if (sortParam) {
-                document.getElementById("sortDropdown").value = sortParam;
-            }
-        });
-    </script>
-
-
-
 
     <!-- Books Display -->
     <h1>All Books</h1>
