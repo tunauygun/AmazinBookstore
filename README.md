@@ -14,9 +14,12 @@ http://localhost:8080/amazinBookstore
 #### Access page to access admin view of books
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin
 http://localhost:8080/amazinBookstore/admin
-#### Access page to access customer books in cart (Only view working as of now)
+#### Access page to access customer books in cart
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/cart
 http://localhost:8080/amazinBookstore/cart
+#### Checkout page for purchasing books in the cart
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/checkout
+http://localhost:8080/amazinBookstore/checkout
 #### Managing books as Admin
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin/books
 http://localhost:8080/amazinBookstore/admin/books
