@@ -1,6 +1,5 @@
-package com.example.amazinbookstore;
+package com.example.amazinbookstore.entities;
 
-import com.example.amazinbookstore.entities.Book;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
