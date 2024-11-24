@@ -98,4 +98,8 @@ public class Cart {
         return getSubtotal() + getShippingFee() + getTax();
     }
 
+    public void emptyCart(){
+        this.cartItems.clear();
+    }
+
 }
