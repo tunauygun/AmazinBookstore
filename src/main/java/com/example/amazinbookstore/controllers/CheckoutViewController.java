@@ -2,7 +2,10 @@ package com.example.amazinbookstore.controllers;
 
 import com.example.amazinbookstore.dto.CheckoutForm;
 import com.example.amazinbookstore.entities.Cart;
+import com.example.amazinbookstore.entities.CartItem;
+import com.example.amazinbookstore.entities.Purchase;
 import com.example.amazinbookstore.repositories.CartRepository;
+import com.example.amazinbookstore.repositories.PurchaseRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,9 @@ public class CheckoutViewController {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private PurchaseRepository purchaseRepository;
+
     @GetMapping
     public String viewCheckoutPage(Model model) {
         populateModal(model);
@@ -36,6 +42,14 @@ public class CheckoutViewController {
         if (bindingResult.hasErrors()) {
             return "Checkout_Page";
         }
+
+        Optional<Cart> cartOptional = cartRepository.findById(1L);
+        Cart cart = cartOptional.orElseGet(Cart::new);
+        Purchase purchase = new Purchase(cart, checkoutForm.getFirstName(), checkoutForm.getLastName(), checkoutForm.getAddress());
+        purchaseRepository.save(purchase);
+
+        cart.emptyCart();
+        cartRepository.save(cart);
 
         model.addAttribute("isCheckedOut", true);
         return "Checkout_Page";
