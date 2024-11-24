@@ -90,6 +90,12 @@ h1 {
     color: #cc812c;
 }
 
+#checkout-link {
+    color: #6a3c07;
+    font-weight: bold;
+    font-size: larger;
+}
+
 .cart-item-buttons h6 {
     width: 20%;
     margin: 0;
