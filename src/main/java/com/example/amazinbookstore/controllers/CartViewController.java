@@ -1,8 +1,6 @@
 package com.example.amazinbookstore.controllers;
 
-import com.example.amazinbookstore.entities.Book;
 import com.example.amazinbookstore.entities.Cart;
-import com.example.amazinbookstore.entities.CartItem;
 import com.example.amazinbookstore.repositories.BookRepository;
 import com.example.amazinbookstore.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller

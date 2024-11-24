@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer - Checkout</title>
+  <link th:href="@{/Checkout_Page.css}" rel="stylesheet" >
+</head>
+<body>
+
+<div class="container">
+
+<!--  This div will render a success message after checkout-->
+  <div id="checkout-success-div" th:if="${isCheckedOut}">
+      <h2 id="checkout-success-text">Checkout was Successful.</h2>
+      <p><a href="/amazinBookstore/customer/books" id="go-back-link">Browse new books</a></p>
+  </div>
+
+<!--  This div will be rendered if the cart is not checked out-->
+  <div th:unless="${isCheckedOut}">
+    <a th:href="@{/amazinBookstore/cart}">
+      <button class="cart_button" type="button" style="float: right">Back to Cart</button>
+    </a>
+    <h1>Checkout</h1>
+    <div class="checkout-container">
+
+      <!--This div contains the shipping information form-->
+      <div class="form-div">
+        <h2>Shipping Information</h2>
+        <form th:action="@{/amazinBookstore/checkout}" th:method="post" th:object="${checkoutForm}">
+
+          <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" placeholder="Enter your first name" required>
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error-message"></span>
+          </div>
+
+          <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" placeholder="Enter your last name" required>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error-message"></span>
+          </div>
+
+          <div>
+            <label for="address">Address:</label>
+            <input id="address" th:field="*{address}" placeholder="Enter your address" required>
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error-message"></span>
+          </div>
+
+          <div>
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" th:field="*{cardNumber}" placeholder="Enter your card number" required>
+            <span th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}" class="error-message"></span>
+          </div>
+
+          <div>
+            <label for="expirationDate">Expiration Date (MM/YY):</label>
+            <input type="text" id="expirationDate" th:field="*{expirationDate}" placeholder="MM/YY" required>
+            <span th:if="${#fields.hasErrors('expirationDate')}" th:errors="*{expirationDate}" class="error-message"></span>
+          </div>
+
+          <div>
+            <label for="securityCode">Security Code (CVV):</label>
+            <input type="text" id="securityCode" th:field="*{securityCode}" placeholder="CVV" required>
+            <span th:if="${#fields.hasErrors('securityCode')}" th:errors="*{securityCode}" class="error-message"></span>
+          </div>
+
+          <button type="submit">Pay</button>
+        </form>
+      </div>
+
+      <!--This div contains the price information-->
+      <div class="price-div">
+        <h2>Order Summary</h2>
+
+        <div class="price-row">
+          <span class="price-label">Subtotal:</span>
+          <span class="price-value" th:text="${subtotal}">Subtotal Amount</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-label">Shipping:</span>
+          <span class="price-value" th:text="${shipping}">Shipping Amount</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-label">Tax:</span>
+          <span class="price-value" th:text="${tax}">Tax Amount</span>
+        </div>
+
+        <div class="price-row total">
+          <span class="price-label">Total:</span>
+          <span class="price-value total-value" th:text="${total}">Total Amount</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+</html>

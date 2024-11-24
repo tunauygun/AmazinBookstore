@@ -65,8 +65,10 @@ $(document).ready(function () {
         // Show or hide the "empty cart" message based on the item count
         if (itemCount === 0) {
             $('#empty-cart-message').show();
+            $('#checkout-link').hide();
         } else {
             $('#empty-cart-message').hide();
+            $('#checkout-link').show();
         }
     }
 
