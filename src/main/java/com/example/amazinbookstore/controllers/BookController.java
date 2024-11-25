@@ -3,6 +3,7 @@ package com.example.amazinbookstore.controllers;
 import com.example.amazinbookstore.entities.Book;
 import com.example.amazinbookstore.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,11 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    // Get all books
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<Book> getAllBooks(@RequestParam(value = "sort", required = false) String sort) {
+        if ("alphabetical".equals(sort)) {
+            return bookRepository.findAll(Sort.by("title").ascending());
+        }
         return bookRepository.findAll();
     }
 
@@ -68,4 +71,9 @@ public class BookController {
         bookRepository.delete(book);
         return ResponseEntity.noContent().build();
     }
+
+
+
+
+
 }
