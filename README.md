@@ -31,6 +31,6 @@ https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/a
 http://localhost:8080/amazinBookstore/customer/recommended_books
 
 ## Database Schema for Milestone 2
-![bookstore](https://github.com/user-attachments/assets/17560f8e-7ed9-4cb4-a62c-1d6a1d1f6d4b)
+![testDb@localhost](https://github.com/user-attachments/assets/597919f5-5b87-4937-9692-54e761a45b16)
 ## UML diagram for Milestone 2
 ![AmazinBookstore](https://github.com/user-attachments/assets/da5afb4f-2b0d-41eb-99e9-e0bb5cdc88ec)
