@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,11 @@
     <a th:href="@{/amazinBookstore/cart}">
         <button class="cart_button" type="button" style="float: right">Cart</button>
     </a>
+  
+    <a th:href="@{/amazinBookstore/customer/recommended_books}">
+        <button class="cart_button" type="button" style="float: right">Recommended Books</button>
+    </a>
+
 
     <!-- Sorting Dropdown -->
     <h2>Sort Books</h2>
