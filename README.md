@@ -14,15 +14,23 @@ http://localhost:8080/amazinBookstore
 #### Access page to access admin view of books
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin
 http://localhost:8080/amazinBookstore/admin
-#### Access page to access customer books in cart (Only view working as of now)
+#### Access page to access customer books in cart
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/cart
 http://localhost:8080/amazinBookstore/cart
+#### Checkout page for purchasing books in the cart
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/checkout
+http://localhost:8080/amazinBookstore/checkout
 #### Managing books as Admin
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/admin/books
 http://localhost:8080/amazinBookstore/admin/books
 #### Viewing books as Customer
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/customer/books
 http://localhost:8080/amazinBookstore/customer/books
+#### Viewing book recommendations as Customer
+https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/customer/recommended_books
+http://localhost:8080/amazinBookstore/customer/recommended_books
 
-## Database Schema for Milestone 1
-![bookstore](https://github.com/user-attachments/assets/17560f8e-7ed9-4cb4-a62c-1d6a1d1f6d4b)
+## Database Schema for Milestone 2
+![testDb@localhost](https://github.com/user-attachments/assets/597919f5-5b87-4937-9692-54e761a45b16)
+## UML diagram for Milestone 2
+![AmazinBookstore](https://github.com/user-attachments/assets/da5afb4f-2b0d-41eb-99e9-e0bb5cdc88ec)

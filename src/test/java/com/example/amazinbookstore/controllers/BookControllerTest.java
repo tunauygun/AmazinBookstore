@@ -1,6 +1,5 @@
-package com.example.amazinbookstore;
+package com.example.amazinbookstore.controllers;
 
-import com.example.amazinbookstore.controllers.BookController;
 import com.example.amazinbookstore.entities.Book;
 import com.example.amazinbookstore.repositories.BookRepository;
 import org.junit.jupiter.api.BeforeEach;

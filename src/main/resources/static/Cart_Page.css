@@ -21,14 +21,12 @@ h1 {
     grid-template-rows: 1fr;
     justify-items: center;
     grid-row-gap: 20px;
-    /*grid-auto-rows: max-content;*/
 }
 
 .cart-item {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    /*overflow: hidden;*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     display: flex;
@@ -58,20 +56,6 @@ h1 {
     margin: 10px 0;
 }
 
-.cart-item-desc .add-to-cart-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #cc812c;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.cart-item-desc .add-to-cart-button:hover {
-    background-color: #7a4209;
-}
-
 .cart-item-desc p.price {
     font-size: 28px;
     font-weight: bold;
@@ -85,8 +69,31 @@ h1 {
     align-items: center;
 }
 
-.inc-count-button {
-    width: 20%;
+.dec-count-button, .inc-count-button {
+    font-size: x-large;
+    padding: 0 10px;
+    margin: 10px;
+    color: #cc812c;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: border-color .3s ease;
+    display: inline-block;
+    background-color: transparent;
+}
+
+.dec-count-button:hover, .inc-count-button:hover {
+    border-color: #cc812c;
+}
+
+#go-back-link {
+    color: #cc812c;
+}
+
+#checkout-link {
+    color: #6a3c07;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .cart-item-buttons h6 {
@@ -96,13 +103,8 @@ h1 {
     font-weight: bold;
 }
 
-.dec-count-button {
-    width: 20%;
-}
-
-
 .button {
-    background-color: #04AA6D; /* Green */
+    background-color: #04aa6d;
     border: none;
     color: white;
     padding: 15px 32px;

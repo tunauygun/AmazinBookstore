@@ -3,12 +3,23 @@
 <head>
   <title>Bookstore Admin</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/Admin_Books.js"></script>
+  <script src="/sort.js"></script>
+  <script>
+    // Apply sorting logic for the admin view
+    applySortDropdown('sortDropdown', '/amazinBookstore/admin/books');
+  </script>
   <link rel="stylesheet" href="/Admin_Books.css"></link>
 </head>
 <body>
 
 <h1>Bookstore Admin</h1>
+
+<!-- Sorting Dropdown -->
+<h2>Sort Books</h2>
+<select id="sortDropdown">
+  <option value="">Default</option>
+  <option value="alphabetical">Alphabetical</option>
+</select>
 
 <h2>Add New Book</h2>
 <form id="addBookForm">
@@ -42,7 +53,17 @@
   </tr>
   </thead>
   <tbody>
-  <!-- Rows will be dynamically populated here -->
+  <tr th:each="book : ${books}">
+    <td th:text="${book.title}">Title</td>
+    <td th:text="${book.getAuthorNamesAsString()}">Authors</td>
+    <td th:text="${book.genre}">Genre</td>
+    <td th:text="${book.isbn}">ISBN</td>
+    <td th:text="${book.pageCount}">Page Count</td>
+    <td th:text="${book.price}">Price</td>
+    <td th:text="${book.publisherName}">Publisher</td>
+    <td th:text="${book.quantity}">Quantity</td>
+    <td th:text="${book.publicationYear}">Year</td>
+  </tr>
   </tbody>
 </table>
 

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer - All Books</title>
-    <link th:href="@{/Customer_Books.css}" rel="stylesheet" >
+    <link th:href="@{/Customer_Books.css}" rel="stylesheet">
+    <script src="/sort.js"></script>
+    <script>
+        // Apply sorting logic for the customer view
+        applySortDropdown('sortDropdown', '/amazinBookstore/customer/books');
+    </script>
 </head>
 <body>
 
@@ -12,6 +17,20 @@
     <a th:href="@{/amazinBookstore/cart}">
         <button class="cart_button" type="button" style="float: right">Cart</button>
     </a>
+  
+    <a th:href="@{/amazinBookstore/customer/recommended_books}">
+        <button class="cart_button" type="button" style="float: right">Recommended Books</button>
+    </a>
+
+
+    <!-- Sorting Dropdown -->
+    <h2>Sort Books</h2>
+    <select id="sortDropdown">
+        <option value="">Default</option>
+        <option value="alphabetical">Alphabetical</option>
+    </select>
+
+    <!-- Books Display -->
     <h1>All Books</h1>
     <div class="books-grid">
 
@@ -26,8 +45,7 @@
                 <p><strong>Year:</strong> <span th:text="${book.publicationYear}"></span></p>
                 <p class="price" th:text="${book.getPriceAsString()}"></p>
 
-                <!-- This div contains the button that sends the post request with the-->
-                <!-- book id of the book to be added to the cart-->
+                <!-- Add to Cart Button -->
                 <div class="button-container">
                     <form th:action="@{/api/cart}" method="post">
                         <input type="hidden" th:name="bookId" th:value="${book.id}" />
@@ -35,8 +53,8 @@
                     </form>
                 </div>
             </div>
-
         </div>
+
     </div>
 </div>
 
