@@ -1,35 +1,43 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Load the books initially
     loadBooks();
 
     // Handle Add Book form submission
-    $('#addBookForm').on('submit', function(event) {
+    $('#addBookForm').on('submit', function (event) {
         event.preventDefault();
         addBook();
     });
 
     // Use event delegation for edit and delete buttons
-    $('#booksTable').on('click', '.edit-button', function() {
+    $('#booksTable').on('click', '.edit-button', function () {
         var bookId = $(this).data('id');
         editBook(bookId);
     });
 
-    $('#booksTable').on('click', '.delete-button', function() {
+    $('#booksTable').on('click', '.delete-button', function () {
         var bookId = $(this).data('id');
         deleteBook(bookId);
     });
+
+    // Apply sorting using the external sort.js utility
+    applySortDropdown('sortDropdown', loadBooks, '/amazinBookstore/admin/books');
+
 });
 
-// Function to load all books and populate the table
-function loadBooks() {
+function loadBooks(sortOrder = '') {
+    let url = '/api/books';
+    if (sortOrder) {
+        url += `?sort=${sortOrder}`;
+    }
+
     $.ajax({
-        url: '/api/books',
+        url: url,
         type: 'GET',
-        success: function(books) {
+        success: function (books) {
             var tbody = $('#booksTable tbody');
             tbody.empty();
             if (books.length > 0) {
-                books.forEach(function(book) {
+                books.forEach(function (book) {
                     var authors = book.authorNames ? book.authorNames.join(", ") : "No Authors";
                     var row = `
                         <tr>
@@ -53,11 +61,12 @@ function loadBooks() {
                 tbody.append('<tr><td colspan="10">No books found.</td></tr>');
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             alert('Failed to load books: ' + xhr.responseText);
         }
     });
 }
+
 
 // Function to add a new book
 function addBook() {
