@@ -4,6 +4,7 @@ package com.example.amazinbookstore.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="AppUser")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
