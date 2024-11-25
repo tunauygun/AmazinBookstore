@@ -29,8 +29,9 @@ public class UserViewController {
         List<User> Users = this.UserRepository.findAll();
         model.addAttribute("user", Users);
         return "Users.html";
+    }
 
-    // Manage all books as admin
+    // Manage all users as admin
     @GetMapping("/admin/users")
     public String manageAllUsersAsAdmin() {
         return "Admin_Users";
