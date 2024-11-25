@@ -6,12 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/Recommended_Books.js"></script>
     <link rel="stylesheet" href="/Recommended_Books.css">
-    <script>
-        <!-- Call function to show first image in javascript -->
-        $(document).ready(function() {
-            changeBook(1);
-        });
-    </script>
 </head>
 
 <body>
@@ -59,7 +53,7 @@
         <!-- Thumbnail images -->
         <div class="row">
             <div class="column" th:each="book,i: ${books}" th:if="${i.index} <8">
-                <img class="thumbnail cursor" th:src="${book.url}" th:attr="onclick=|changeBook(${i.index}+1)|" th:alt="${book.title}">
+                <img class="thumbnail cursor" th:src="${book.url}" th:attr="onclick=|changeBook(${i.index})|" th:alt="${book.title}">
             </div>
         </div>
     </div>
