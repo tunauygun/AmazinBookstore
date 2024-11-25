@@ -36,4 +36,11 @@ class NavigationViewControllerTest {
                 .andExpect(status().isOk()) // Expect HTTP 200 (OK)
                 .andExpect(view().name("Admin_Page"));
     }
+
+    @Test
+    void testViewRecommendedBookPage() throws Exception {
+        mockMvc.perform(get("/amazinBookstore/customer/recommended_books"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Recommended_Books"));
+    }
 }
