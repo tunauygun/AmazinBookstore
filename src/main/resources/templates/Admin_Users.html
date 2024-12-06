@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bookstore Admin</title>
+  <title>User Admin Page</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/Admin_Users.js"></script>
   <style>
@@ -15,11 +15,11 @@
 </head>
 <body>
 
-<h1>Bookstore Admin</h1>
+<h1>User Admin Interface</h1>
 
 <h2>Add New User</h2>
 <form id="addUserForm">
-  <input type="text" id="name" placeholder="Title" required>
+  <input type="text" id="name" placeholder="Name" required>
   <label for="adminStatus" > Is this user an admin? </label><input type="checkbox" id="adminStatus"  >
   <button type="submit">Add User</button>
 </form>
@@ -28,7 +28,6 @@
 <table id="usersTable">
   <thead>
   <tr>
-    <th>ID</th>
     <th>Name</th>
     <th>AdminStatus</th>
     <th>Actions</th>
