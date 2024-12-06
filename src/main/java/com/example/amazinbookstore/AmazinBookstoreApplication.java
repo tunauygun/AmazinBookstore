@@ -1,13 +1,18 @@
 package com.example.amazinbookstore;
 
 import com.example.amazinbookstore.entities.Book;
+import com.example.amazinbookstore.entities.Cart;
+import com.example.amazinbookstore.entities.CartItem;
+import com.example.amazinbookstore.entities.Purchase;
 import com.example.amazinbookstore.repositories.BookRepository;
+import com.example.amazinbookstore.repositories.PurchaseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class AmazinBookstoreApplication {
@@ -17,7 +22,7 @@ public class AmazinBookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository bookRepository) {
+	public CommandLineRunner demo(BookRepository bookRepository, PurchaseRepository purchaseRepository) {
 		return (args) -> {
 			// Create some initial books
 			Book book1 = new Book(
@@ -121,6 +126,157 @@ public class AmazinBookstoreApplication {
 			bookRepository.save(book18);
 			bookRepository.save(book19);
 			bookRepository.save(book20);
+
+			List<Book> books = bookRepository.findAll();
+
+			//add 10 purchases
+
+			CartItem cartItem1, cartItem2, cartItem3, cartItem4, cartItem5;
+			Cart cart;
+			Purchase purchase;
+
+			cartItem1 = new CartItem(books.get(5), 2);
+			cartItem2 = new CartItem(books.get(7), 2);
+			cartItem3 = new CartItem(books.get(2), 1);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(13), 1);
+			cartItem2 = new CartItem(books.get(17), 1);
+			cartItem3 = new CartItem(books.get(12), 1);
+			cartItem4 = new CartItem(books.get(5), 1);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			cart.addCartItem(cartItem4);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(12), 1);
+			cartItem2 = new CartItem(books.get(19), 4);
+			cartItem3 = new CartItem(books.get(4), 4);
+			cartItem4 = new CartItem(books.get(1), 1);
+			cartItem5 = new CartItem(books.get(3), 3);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			cart.addCartItem(cartItem4);
+			cart.addCartItem(cartItem5);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(2), 4);
+			cartItem2 = new CartItem(books.get(17), 4);
+			cartItem3 = new CartItem(books.get(2), 4);
+			cartItem4 = new CartItem(books.get(5), 5);
+			cartItem5 = new CartItem(books.get(7), 4);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			cart.addCartItem(cartItem4);
+			cart.addCartItem(cartItem5);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(3), 4);
+			cartItem2 = new CartItem(books.get(7), 3);
+			cartItem3 = new CartItem(books.get(8), 4);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(8), 4);
+			cartItem2 = new CartItem(books.get(4), 5);
+			cartItem3 = new CartItem(books.get(9), 4);
+			cartItem4 = new CartItem(books.get(1), 1);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			cart.addCartItem(cartItem4);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(2), 3);
+			cartItem2 = new CartItem(books.get(9), 1);
+			cartItem3 = new CartItem(books.get(14), 1);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(14), 2);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(17), 3);
+			cartItem2 = new CartItem(books.get(0), 3);
+			cartItem3 = new CartItem(books.get(16), 4);
+			cartItem4 = new CartItem(books.get(7), 2);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			cart.addCartItem(cartItem4);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			cartItem1 = new CartItem(books.get(7), 5);
+			cartItem2 = new CartItem(books.get(11), 2);
+			cartItem3 = new CartItem(books.get(4), 4);
+			cart = new Cart();
+			cart.addCartItem(cartItem1);
+			cart.addCartItem(cartItem2);
+			cart.addCartItem(cartItem3);
+			purchase = new Purchase(cart,"qw","er", "tyuio");
+			purchaseRepository.save(purchase);
+
+			//Show if purchases were saved properly
+//			List<Purchase> purchases = purchaseRepository.findAll();
+//			for (Purchase p : purchases) {
+//				System.out.println("\n");
+//				System.out.println("purchase id = " + p.getId());
+//				System.out.println("purchased books size = " + p.getBooks().size());
+//				System.out.print("Book id = ");
+//				for (Book b : p.getBooks()) {
+//					System.out.print(b.getId().toString() + ", ");
+//				}
+//				System.out.println();
+//			}
+
+////			Generate purchases
+//			Random rand = new Random();
+//			for (int i = 1; i < 6; i++) {
+//				int j = 0;
+//				int maxj = rand.nextInt(8)+1;
+//				for (j = 1; j <= maxj; j++) {
+//					System.out.println("cartItem" + j + " = new CartItem(books.get(" + rand.nextInt(20) + "), " + (rand.nextInt(5) + 1) + ");");
+//				}
+//				System.out.println("cart = new Cart();");
+//				for (j = 1; j <= maxj; j++) {
+//					System.out.println("cart.addCartItem(cartItem" + j + ");");
+//				}
+//				System.out.println("cartRepository.save(cart);");
+//				System.out.println("carts = cartRepository.findAll();");
+//				System.out.println("purchase = new Purchase(carts.get(0),\"qw\",\"er\", \"tyuio\");");
+//				System.out.println("purchaseRepository.save(purchase);");
+//				System.out.println("cartRepository.deleteAll();");
+//				System.out.println();
+//			}
 		};
 	}
 
