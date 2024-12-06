@@ -33,7 +33,7 @@ function loadUsers() {
                     var row = `
                         <tr>
                             <td>${user.name}</td>
-                            <td>${user.adminStatus}</td>
+                            <td>${user.isAdmin}</td>
                             <td>
                                 <button class="edit-button" data-id="${user.id}">Edit</button>
                                 <button class="delete-button" data-id="${user.id}">Delete</button>
@@ -54,7 +54,7 @@ function loadUsers() {
 // Function to add a new user
 function addUser() {
     var name = $('#name').val();
-    var adminStatus = $('#adminStatus').val();
+    var adminStatus = $('#adminStatus').is(':checked');
 
     $.ajax({
         url: '/api/users',
@@ -62,7 +62,7 @@ function addUser() {
         contentType: 'application/json',
         data: JSON.stringify({
             name: name,
-            adminStatus: adminStatus,
+            isAdmin: adminStatus,
         }),
         success: function() {
             alert('User added successfully!');
@@ -109,7 +109,7 @@ function editUser(id) {
                     contentType: 'application/json',
                     data: JSON.stringify({
                         name: newName,
-                        adminStatus: newAdminStatus,
+                        isAdmin: newAdminStatus,
 
                     }),
                     success: function() {

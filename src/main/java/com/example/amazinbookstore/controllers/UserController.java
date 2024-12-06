@@ -10,7 +10,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*") // Allow CORS for all origins (needed if you're accessing from another host or port)
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -45,7 +44,7 @@ public class UserController {
             return new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         });
         user.setName(userDetails.getName());
-        user.setAdminStatus(userDetails.getAdminStatus());
+        user.setIsAdmin(userDetails.getIsAdmin());
         User updatedUser = (User)this.userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }

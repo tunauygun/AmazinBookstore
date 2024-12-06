@@ -32,11 +32,11 @@ public class User {
         this.name = name;
     }
 
-    public Boolean getAdminStatus() {
+    public Boolean getIsAdmin() {
         return this.isAdmin;
     }
 
-    public void setAdminStatus(boolean isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 }
