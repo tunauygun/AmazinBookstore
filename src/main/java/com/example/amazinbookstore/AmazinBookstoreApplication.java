@@ -129,6 +129,8 @@ public class AmazinBookstoreApplication {
 
 			List<Book> books = bookRepository.findAll();
 
+			if (books.size() == 20) {
+
 			//add 10 purchases
 
 			CartItem cartItem1, cartItem2, cartItem3, cartItem4, cartItem5;
@@ -277,6 +279,7 @@ public class AmazinBookstoreApplication {
 //				System.out.println("cartRepository.deleteAll();");
 //				System.out.println();
 //			}
+				}
 		};
 	}
 

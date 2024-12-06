@@ -2,6 +2,8 @@ package com.example.amazinbookstore.controllers;
 
 import com.example.amazinbookstore.entities.Book;
 import com.example.amazinbookstore.repositories.BookRepository;
+import com.example.amazinbookstore.repositories.PurchaseRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,24 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class BookControllerTest {
 
     @Autowired
+    private PurchaseRepository purchaseRepository;
+
+    @Autowired
     private BookRepository adminBookRepository;
 
     @Autowired
     private BookController adminBookController;
+
     @BeforeEach
     void setUp() {
-
+        purchaseRepository.deleteAll();
         adminBookRepository.deleteAll();
     }
 
+    @AfterEach
+    void tearDown() {
+        adminBookRepository.deleteAll();
+    }
 
     @Test
     void getAllBooks() {
