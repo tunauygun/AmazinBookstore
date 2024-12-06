@@ -30,7 +30,15 @@ http://localhost:8080/amazinBookstore/customer/books
 https://amazinbookstoreapp-e6arfpg3ezc9ezep.canadacentral-01.azurewebsites.net/amazinBookstore/customer/recommended_books
 http://localhost:8080/amazinBookstore/customer/recommended_books
 
-## Database Schema for Milestone 2
-![testDb@localhost](https://github.com/user-attachments/assets/597919f5-5b87-4937-9692-54e761a45b16)
-## UML diagram for Milestone 2
-![AmazinBookstore](https://github.com/user-attachments/assets/da5afb4f-2b0d-41eb-99e9-e0bb5cdc88ec)
+## Milestone 3 update:
+- To help with the navigation within the app, added back buttons.
+- Create and edit user and admin page is working.
+- Sort can dynamically shows the change in database.
+- The recommended books page now displays actuall book recommendations based on the Jaccard Distance of previous purchases.
+- The admin book creation page now uses Webflux/Webclient to get the cover image URL of the book from an external API based on ISBN-13 number.
+
+## Database Schema for Milestone 3
+![testDb](https://github.com/user-attachments/assets/eeb5a12f-1515-429a-a54a-366d250b7eb4)
+## UML diagram for Milestone 3
+![image](https://github.com/user-attachments/assets/d2aca65f-6655-4f84-9b5a-0ebbfce03b83)
+
