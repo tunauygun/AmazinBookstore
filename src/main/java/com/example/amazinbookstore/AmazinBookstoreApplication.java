@@ -1,11 +1,13 @@
 package com.example.amazinbookstore;
 
 import com.example.amazinbookstore.entities.Book;
+import com.example.amazinbookstore.entities.User;
 import com.example.amazinbookstore.entities.Cart;
 import com.example.amazinbookstore.entities.CartItem;
 import com.example.amazinbookstore.entities.Purchase;
 import com.example.amazinbookstore.repositories.BookRepository;
 import com.example.amazinbookstore.repositories.PurchaseRepository;
+import com.example.amazinbookstore.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +24,8 @@ public class AmazinBookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository bookRepository, PurchaseRepository purchaseRepository) {
+	public CommandLineRunner demo(BookRepository bookRepository, UserRepository userRepository, PurchaseRepository purchaseRepository) {
+    
 		return (args) -> {
 			// Create some initial books
 			Book book1 = new Book(
@@ -126,6 +129,20 @@ public class AmazinBookstoreApplication {
 			bookRepository.save(book18);
 			bookRepository.save(book19);
 			bookRepository.save(book20);
+
+      //adding-some-initial-users
+			User user1 = new User("Ben", true );
+			User user2 = new User("Mika", true );
+			User user3 = new User("Tharsan", true );
+			User user4 = new User("Tuna", true );
+			User user5 = new User("Bob", false);
+
+
+			userRepository.save(user1);
+			userRepository.save(user2);
+			userRepository.save(user3);
+			userRepository.save(user4);
+			userRepository.save(user5);
 
 			List<Book> books = bookRepository.findAll();
 
@@ -280,6 +297,7 @@ public class AmazinBookstoreApplication {
 //				System.out.println();
 //			}
 				}
+
 		};
 	}
 
