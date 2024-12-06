@@ -4,12 +4,14 @@ import com.example.amazinbookstore.entities.Book;
 import com.example.amazinbookstore.entities.Cart;
 import com.example.amazinbookstore.repositories.BookRepository;
 import com.example.amazinbookstore.repositories.CartRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -31,6 +33,17 @@ class CartControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @BeforeTestClass
+    void setUp() {
+        cartRepository.deleteAll();
+    }
+
+    @AfterEach
+    void tearDown() {
+
+        cartRepository.deleteAll();
+    }
 
     @Test
     void testAddNewBookToCart_BookExists() throws Exception {

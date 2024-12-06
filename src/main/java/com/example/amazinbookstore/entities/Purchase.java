@@ -12,7 +12,7 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Book> books;
 
     private String firstName;
@@ -70,6 +70,14 @@ public class Purchase {
             }
         }
         this.books.add(newBook);
+    }
+
+    public List<Long> getBookIds() {
+        List<Long> bookIds = new ArrayList<>();
+        for (Book book : this.books) {
+            bookIds.add(book.getId());
+        }
+        return bookIds;
     }
 
     public String getFirstName() {
