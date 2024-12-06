@@ -23,6 +23,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public CartItem(Book book, int quantity) {
+        this.book = book;
+        this.quantity = quantity;
+    }
+
     public Long getId() {
         return id;
     }
