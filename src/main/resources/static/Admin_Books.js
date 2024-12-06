@@ -85,32 +85,42 @@ function addBook() {
     var price = $('#price').val();
     var publisherName = $('#publisherName').val();
     var quantity = $('#quantity').val();
-    var url = $('#url').val();
     var publicationYear = $('#year').val();
 
+    let coverUrl = `https://placehold.co/400x600/orange/white?text=${encodeURIComponent(title)}`;
+
     $.ajax({
-        url: '/api/books',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            title: title,
-            authorNames: authorNames,
-            genre: genre,
-            isbn: isbn,
-            pageCount: pageCount,
-            price: price,
-            publisherName: publisherName,
-            quantity: quantity,
-            url: url,
-            publicationYear: publicationYear
-        }),
-        success: function() {
-            alert('Book added successfully!');
-            $('#addBookForm')[0].reset();
-            loadBooks(); // Refresh the table
+        url: `/api/bookCover/${isbn}`,
+        method: 'GET',
+        success: function(response) {
+            coverUrl = response.url; // Override with actual cover URL if successful
         },
-        error: function(xhr, status, error) {
-            alert('Failed to add book: ' + xhr.responseText);
+        complete: function() {
+            $.ajax({
+                url: '/api/books',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    title: title,
+                    authorNames: authorNames,
+                    genre: genre,
+                    isbn: isbn,
+                    pageCount: pageCount,
+                    price: price,
+                    publisherName: publisherName,
+                    quantity: quantity,
+                    url: coverUrl,
+                    publicationYear: publicationYear
+                }),
+                success: function() {
+                    alert('Book added successfully!');
+                    $('#addBookForm')[0].reset();
+                    loadBooks(); // Refresh the table
+                },
+                error: function(xhr) {
+                    alert('Failed to add book: ' + xhr.responseText);
+                }
+            });
         }
     });
 }
