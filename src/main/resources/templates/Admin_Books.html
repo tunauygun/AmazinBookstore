@@ -4,6 +4,7 @@
   <title>Bookstore Admin</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/sort.js"></script>
+  <script src="/Admin_Books.js"></script>
   <script>
     // Apply sorting logic for the admin view
     applySortDropdown('sortDropdown', '/amazinBookstore/admin/books');
@@ -63,8 +64,13 @@
     <td th:text="${book.publisherName}">Publisher</td>
     <td th:text="${book.quantity}">Quantity</td>
     <td th:text="${book.publicationYear}">Year</td>
+    <td>
+      <button class="edit-button" data-id="${book.id}">Edit</button>
+      <button class="delete-button" data-id="${book.id}">Delete</button>
+    </td>
   </tr>
   </tbody>
+
 </table>
 
 </body>

@@ -8,14 +8,15 @@ $(document).ready(function () {
         addBook();
     });
 
-    // Use event delegation for edit and delete buttons
     $('#booksTable').on('click', '.edit-button', function () {
         var bookId = $(this).data('id');
+        console.log("Edit button clicked, Book ID: " + bookId);
         editBook(bookId);
     });
 
     $('#booksTable').on('click', '.delete-button', function () {
         var bookId = $(this).data('id');
+        console.log("Edit button clicked, Book ID: " + bookId);
         deleteBook(bookId);
     });
 
@@ -24,7 +25,12 @@ $(document).ready(function () {
 
 });
 
-function loadBooks(sortOrder = '') {
+function loadBooks() {
+
+    // Extract the 'sort' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sortOrder = urlParams.get("sort") || '';
+
     let url = '/api/books';
     if (sortOrder) {
         url += `?sort=${sortOrder}`;
@@ -66,6 +72,7 @@ function loadBooks(sortOrder = '') {
         }
     });
 }
+
 
 
 // Function to add a new book

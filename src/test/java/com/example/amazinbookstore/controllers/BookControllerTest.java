@@ -38,7 +38,7 @@ class BookControllerTest {
         adminBookRepository.save(book);
 
         // Act
-        List<Book> result = adminBookController.getAllBooks();
+        List<Book> result = adminBookController.getAllBooks("sort");
 
         // Assert
         assertNotNull(result);
